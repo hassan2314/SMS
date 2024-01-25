@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Models\Enrollment;
+use App\Models\Batch;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 
@@ -14,6 +16,7 @@ class EnrollmentController extends Controller
      */
     public function index():view
     {
+        
         $enrollment= Enrollment::all();
         return view('enrollments.index')->with('enrollments',$enrollment);
     }
@@ -23,7 +26,9 @@ class EnrollmentController extends Controller
      */
     public function create()
     {
-        return view('enrollments.create');
+        $batches = Batch::pluck('id','name');
+        $students = Student::pluck('id','name');
+        return view('enrollments.create', compact('batches','students'));
     }
 
     /**
