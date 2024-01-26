@@ -55,8 +55,10 @@ class EnrollmentController extends Controller
      */
     public function edit(string $id)
     {
+        $batches = Batch::pluck('id','name');
+        $students = Student::pluck('id','name');
         $enrollments = Enrollment::find($id);
-        return view('enrollments.edit')->with('enrollments',$enrollments);
+        return view('enrollments.edit', compact('batches','students'))->with('enrollments',$enrollments);
     }
 
     /**

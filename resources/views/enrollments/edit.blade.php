@@ -12,10 +12,17 @@
         <label>Enroll no</label></br>
         <input type="text" name="enroll_no" id="enroll_no" value="{{$enrollments->enroll_no}}" class="form-control"></br>
         <label>Batch Id</label></br>
-        <input type="number" name="batch_id" id="batch_id" value="{{$enrollments->batch_id}}" class="form-control"></br>
+        <select  name="batch_id" id="batch_id" class="form-control">
+        @foreach($batches as  $id=>$name)
+        <option value="{{$name}}">{{$id}}</option>
+        @endforeach
+      </select>
         <label>Student Id</label></br>
-        <input type="number" name="student_id" id="student_id" value="{{$enrollments->student_id}}" class="form-control"></br>
-        <input type="submit" value="Update" class="btn btn-success"></br>
+        <select  name="student_id" id="student_id" class="form-control">
+        @foreach($students as  $id=>$name)
+        <option value="{{$name}}">{{$id}}</option> 
+        @endforeach
+      </select>
         <label>Join Date</label></br>
         <input type="text" name="join_date" id="join_date" value="{{$enrollments->join_date}}" class="form-control"></br>
         <label>Fee</label></br>
